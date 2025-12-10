@@ -1,6 +1,6 @@
 from mcp.server.fastmcp import FastMCP
 from typing import Any
-
+import logging
 mcp = FastMCP("account_server")
 
 @mcp.tool(name="get_account_info", description="Get account information for a given user ID.")
@@ -17,4 +17,7 @@ async def hello_tool() -> str:
     return "Hello, world!"
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger("mcp.server.fastmcp").setLevel(logging.DEBUG)
+    logging.info("Starting MCP server for account_server.py")
     mcp.run(transport="stdio")
