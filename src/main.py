@@ -9,13 +9,14 @@ load_dotenv()
 async def main():
     # 2. Run the Agent with a prompt
     fetch_params = MCPServerStdioParams(command="uv", args=["run", "src/account_server.py"])
-    params = {
+    params = { # type: ignore
         "command": "uv",
         "args": ["run", "src/account_server.py"],
     }
 
     async with MCPServerStdio(params=fetch_params, client_session_timeout_seconds=60) as server:
         fetch_tools = await server.list_tools()
+        print("Available tools from account_server.py:")
 
         for tool in fetch_tools:
             print(f"{tool.name}: {(tool.description or '').replace('\n', ' ')}")

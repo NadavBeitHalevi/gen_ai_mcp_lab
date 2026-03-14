@@ -1,2 +1,5 @@
 dotenv
 openai-agents
+asyncpg
+fastapi
+uvicorn
