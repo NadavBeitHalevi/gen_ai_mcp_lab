@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from typing import Any
 
 from mcp import ClientSession
@@ -10,7 +11,8 @@ from pydantic import AnyUrl, TypeAdapter
 
 class MCPDBClient:
     def __init__(self) -> None:
-        self._server_params = StdioServerParameters(command="uv", args=["run", "src/db_server.py"])
+        # Use the same Python runtime as the API process so MCP server dependencies match.
+        self._server_params = StdioServerParameters(command=sys.executable, args=["src/db_server.py"])
 
     async def _with_session(self) -> ClientSession:
         raise RuntimeError("Use within async context manager")

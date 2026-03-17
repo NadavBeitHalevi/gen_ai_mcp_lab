@@ -27,6 +27,12 @@ HTTP request -> FastAPI controller -> MCP client service -> MCP DB server -> Pos
 - `docker-compose.yml`: local PostgreSQL setup
 - `db/init/001_create_users.sql`: users table schema init
 
+## Team Sharing Assets
+
+- `request_flow.md`: Mermaid sequence flow (Swagger -> MCP -> DB -> response)
+- `mcp_demo.ipynb`: workshop notebook for architecture, setup, implementation, and tests
+- `mcp_briefing.md`: concise manager-facing summary of value, tradeoffs, and next steps
+
 ## Prerequisites
 
 - Docker Desktop running
